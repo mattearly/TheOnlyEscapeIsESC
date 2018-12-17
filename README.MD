@@ -12,6 +12,7 @@ A game I made for a class to demonstrate some stuff you can do with OpenGL, C++,
 
 #### controls:
 
+* mouse move - look
 * wasd - move
 * space - jump
 * mouse wheel - zoom in/out

@@ -18,7 +18,7 @@ static struct Camera_Movement {
 constexpr float YAW          =  -45.0f;
 constexpr float PITCH        =  0.0f;
 constexpr float SPEED        =  0.005f;
-constexpr float SENSITIVITY  =  0.011f;
+constexpr float SENSITIVITY  =  0.02f;
 constexpr float ZOOM         =  45.0f;
 constexpr float CAMSTART[3]  = { -3.0f, 1.0f, 8.7f };
 constexpr float JUMPHEIGHT   = CAMSTART[1] + 0.6f;
