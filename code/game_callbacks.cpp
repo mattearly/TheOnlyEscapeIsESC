@@ -1,7 +1,7 @@
 #include "game.h"
 #include <iostream>
 #include <glm/gtc/type_ptr.hpp>
-#include <glm/gtx/transform.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #include "game_modes.h"
 #include <stdlib.h>
 #include "camera.h"
