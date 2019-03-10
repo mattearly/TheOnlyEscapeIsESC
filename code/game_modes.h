@@ -34,4 +34,3 @@ static int mainDoorHp = 5;
 static bool gameOver = false;
 
 #endif // GAME_MODES
-

@@ -19,7 +19,7 @@ public:
   unsigned int ID;
   // constructor generates the shader on the fly
   // ------------------------------------------------------------------------
-  Shader(const char* vertexPath, const char* fragmentPath)
+  Shader(const char *vertexPath, const char *fragmentPath)
   {
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -27,8 +27,8 @@ public:
     std::ifstream vShaderFile;
     std::ifstream fShaderFile;
     // ensure ifstream objects can throw exceptions:
-    vShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
-    fShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+    vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+    fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
     try
     {
       // open files
@@ -49,8 +49,8 @@ public:
     {
       std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
     }
-    const char* vShaderCode = vertexCode.c_str();
-    const char * fShaderCode = fragmentCode.c_str();
+    const char *vShaderCode = vertexCode.c_str();
+    const char *fShaderCode = fragmentCode.c_str();
     // 2. compile shaders
     unsigned int vertex, fragment;
     // vertex shader
@@ -72,7 +72,6 @@ public:
     // delete the shaders as they're linked into our program now and no longer necessery
     glDeleteShader(vertex);
     glDeleteShader(fragment);
-
   }
   // activate the shader
   // ------------------------------------------------------------------------
@@ -152,7 +151,8 @@ private:
       if (!success)
       {
         glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-        std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+        std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n"
+                  << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
       }
     }
     else
@@ -161,9 +161,10 @@ private:
       if (!success)
       {
         glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-        std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+        std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n"
+                  << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
       }
     }
   }
 };
-#endif  //SHADER_H
+#endif //SHADER_H
