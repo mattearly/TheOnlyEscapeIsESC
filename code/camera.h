@@ -10,18 +10,19 @@
 #include "game_modes.h"
 #include "solidzone.h"
 
-static struct Camera_Movement {
+static struct Camera_Movement
+{
   bool forward = false, back = false, left = false, right = false;
 } CamMove;
 
 // Default camera values
-constexpr float YAW          =  -45.0f;
-constexpr float PITCH        =  0.0f;
-constexpr float SPEED        =  0.005f;
-constexpr float SENSITIVITY  =  0.011f;
-constexpr float ZOOM         =  45.0f;
-constexpr float CAMSTART[3]  = { -3.0f, 1.0f, 8.7f };
-constexpr float JUMPHEIGHT   = CAMSTART[1] + 0.6f;
+constexpr float YAW = -45.0f;
+constexpr float PITCH = 0.0f;
+constexpr float SPEED = 0.005f;
+constexpr float SENSITIVITY = 0.0009f;
+constexpr float ZOOM = 45.0f;
+constexpr float CAMSTART[3] = {-3.0f, 1.0f, 8.7f};
+constexpr float JUMPHEIGHT = CAMSTART[1] + 0.6f;
 //constexpr float BOUNDRYSIZE  = 9.9;
 constexpr float MAXLOOKANGLE = 35.0f;
 constexpr float TIMEBETWEENFOOTSTEPS = 290.0f;
@@ -50,8 +51,8 @@ public:
 
   // Constructor with vectors - default constructor
   Camera(glm::vec3 position = glm::vec3(CAMSTART[0], CAMSTART[1], CAMSTART[2]), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW,
-  float pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED),
-    MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
+         float pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED),
+                                MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
   {
     Position = position;
     WorldUp = up;
@@ -62,8 +63,7 @@ public:
     updateCameraVectors();
   }
   // Constructor with scalar values
-  Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) :
-    Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
+  Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
   {
     Position = glm::vec3(posX, posY, posZ);
     WorldUp = glm::vec3(upX, upY, upZ);
@@ -86,68 +86,87 @@ public:
     int PosY = Position.y;
     int PosZ = Position.z;
     float velocity = MovementSpeed * deltaTime;
-    if (CamMove.forward) {
+    if (CamMove.forward)
+    {
       Position += Front * velocity;
     }
-    if (CamMove.back){
+    if (CamMove.back)
+    {
       Position -= Front * velocity;
     }
-    if (CamMove.left){
+    if (CamMove.left)
+    {
       Position -= Right * velocity;
     }
-    if (CamMove.right){
+    if (CamMove.right)
+    {
       Position += Right * velocity;
     }
 
     // check collision
     if (Position.x > ZONESIZE || Position.z > ZONESIZE ||
-        Position.x < -ZONESIZE || Position.z < -ZONESIZE) {
-      if (CamMove.forward) {
+        Position.x < -ZONESIZE || Position.z < -ZONESIZE)
+    {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
     }
     // check orange wall
     else if (Position.x > ZONEDX[0] && Position.z < ZONEDZ[0] &&
-             Position.x < ZONEDX[1] && Position.z > ZONEDZ[1]) {
+             Position.x < ZONEDX[1] && Position.z > ZONEDZ[1])
+    {
       std::cout << "orange wall block\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
     }
     // check blue wall (and right side of orange wall)
     else if (Position.x > ZONEDX[2] && Position.z < ZONEDZ[0] &&
-             Position.x < ZONEDX[3] && Position.z > ZONEDZ[1]) {
+             Position.x < ZONEDX[3] && Position.z > ZONEDZ[1])
+    {
       std::cout << "blue wall block\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
@@ -155,18 +174,23 @@ public:
     // check orange door
     else if (!orangeRoomOpen &&
              Position.x > ZONEDX[4] && Position.z < ZONEDZ[0] &&
-             Position.x < ZONEDX[5] && Position.z > ZONEDZ[1]) {
+             Position.x < ZONEDX[5] && Position.z > ZONEDZ[1])
+    {
       std::cout << "door orange wall block\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
@@ -174,18 +198,23 @@ public:
     // check blue door
     else if (!blueRoomOpen &&
              Position.x > ZONEDX[6] && Position.z < ZONEDZ[0] &&
-             Position.x < ZONEDX[7] && Position.z > ZONEDZ[1]) {
+             Position.x < ZONEDX[7] && Position.z > ZONEDZ[1])
+    {
       std::cout << "door blue wall block\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
@@ -193,73 +222,92 @@ public:
     // check purple wall
     else if (!purpleRoomOpen &&
              Position.x > ZONEDX[8] && Position.z < ZONEDZ[2] &&
-             Position.x < ZONEDX[9] && Position.z > ZONEDZ[3]) {
+             Position.x < ZONEDX[9] && Position.z > ZONEDZ[3])
+    {
       std::cout << "purple wall block\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
     }
     //purple room is open
-    else if
-        (Position.x > ZONEDX[8]+1.3 && Position.z < ZONEDZ[2] &&
-         Position.x < ZONEDX[9] && Position.z > ZONEDZ[3]) {
+    else if (Position.x > ZONEDX[8] + 1.3 && Position.z < ZONEDZ[2] &&
+             Position.x < ZONEDX[9] && Position.z > ZONEDZ[3])
+    {
       std::cout << "purple wall block\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
     }
     // check in between orange/blue rooms wall
     else if (Position.x > ZONEDX[10] && Position.z < ZONEDZ[4] &&
-             Position.x < ZONEDX[11] && Position.z > ZONEDZ[5]) {
+             Position.x < ZONEDX[11] && Position.z > ZONEDZ[5])
+    {
       std::cout << "in between wall block\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
     }
     // check RED wall
     else if (Position.x > ZONEDX[12] && Position.z < ZONEDZ[6] &&
-             Position.x < ZONEDX[13] && Position.z > ZONEDZ[7]) {
+             Position.x < ZONEDX[13] && Position.z > ZONEDZ[7])
+    {
       std::cout << "RED wall block\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
@@ -267,18 +315,23 @@ public:
     // check REDDESTRUCTABLE wall
     else if (!redWallDestroyed &&
              Position.x > ZONEDX[14] && Position.z < ZONEDZ[8] &&
-             Position.x < ZONEDX[15] && Position.z > ZONEDZ[9]) {
+             Position.x < ZONEDX[15] && Position.z > ZONEDZ[9])
+    {
       std::cout << "RED DESTRUCTABLE wall block!\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
@@ -286,10 +339,10 @@ public:
 
     //allow front door passage if it is destoyed
     else if (
-             mainDoorHp == 0 &&  //allow passage through main door if destroyed
-             Position.x > -2.0f && Position.z < HOUSESIZE &&
-             Position.x < 2.0f  && Position.z > HOUSESIZE-0.4f
-             ) {
+        mainDoorHp == 0 && //allow passage through main door if destroyed
+        Position.x > -2.0f && Position.z < HOUSESIZE &&
+        Position.x < 2.0f && Position.z > HOUSESIZE - 0.4f)
+    {
       // dont do anything, just allow it
     }
 
@@ -297,61 +350,74 @@ public:
     //    thus we are doing it last so it only executes if all the
     //    others pass
     else if (
-             Position.x > HOUSESIZE-0.4f && Position.z < HOUSESIZE &&  //right wall
-             Position.x < HOUSESIZE && Position.z > -HOUSESIZE ||
+        Position.x > HOUSESIZE - 0.4f && Position.z < HOUSESIZE && //right wall
+            Position.x < HOUSESIZE && Position.z > -HOUSESIZE ||
 
-             Position.x < -HOUSESIZE+0.4f && Position.z < HOUSESIZE &&  //left wall
-             Position.x > -HOUSESIZE && Position.z > -HOUSESIZE ||
+        Position.x < -HOUSESIZE + 0.4f && Position.z < HOUSESIZE && //left wall
+            Position.x > -HOUSESIZE && Position.z > -HOUSESIZE ||
 
-             Position.x < HOUSESIZE && Position.z < -HOUSESIZE+0.4f &&  //far wall
-             Position.x > -HOUSESIZE && Position.z > -HOUSESIZE ||
+        Position.x < HOUSESIZE && Position.z < -HOUSESIZE + 0.4f && //far wall
+            Position.x > -HOUSESIZE && Position.z > -HOUSESIZE ||
 
-             Position.x < HOUSESIZE && Position.z < HOUSESIZE &&  //front wall
-             Position.x > -HOUSESIZE && Position.z > HOUSESIZE-0.4f
-             ) {
+        Position.x < HOUSESIZE && Position.z < HOUSESIZE && //front wall
+            Position.x > -HOUSESIZE && Position.z > HOUSESIZE - 0.4f)
+    {
       std::cout << "house wall block\n";
-      if (CamMove.forward) {
+      if (CamMove.forward)
+      {
         Position -= Front * velocity;
       }
-      if (CamMove.back){
+      if (CamMove.back)
+      {
         Position += Front * velocity;
       }
-      if (CamMove.left){
+      if (CamMove.left)
+      {
         Position += Right * velocity;
       }
-      if (CamMove.right){
+      if (CamMove.right)
+      {
         Position -= Right * velocity;
       }
       positionChanged = false;
     }
 
-    if (timeSinceLastStep > TIMEBETWEENFOOTSTEPS) {
-      if (positionChanged) {
+    if (timeSinceLastStep > TIMEBETWEENFOOTSTEPS)
+    {
+      if (positionChanged)
+      {
         playfootstepsound();
         timeSinceLastStep = 0;
       }
-    } else {
+    }
+    else
+    {
       timeSinceLastStep += deltaTime;
     }
 
-    if (onGround) {
+    if (onGround)
+    {
       // feet on the floor
       Position.y = CAMSTART[1];
-    } else if (/*!onGround && */ !isFalling) {
+    }
+    else if (/*!onGround && */ !isFalling)
+    {
       //rising
-
-    } else {
+    }
+    else
+    {
       //falling
-
     }
     updateCameraVectors();
   }
 
-  void Jump() {
-    if (onGround) {
+  void Jump()
+  {
+    if (onGround)
+    {
       isFalling = false;
       onGround = false;
-//      updateCameraVectors();
+      //      updateCameraVectors();
       playgruntsound();
     }
   }
@@ -362,15 +428,18 @@ public:
     xoffset *= MouseSensitivity;
     yoffset *= MouseSensitivity;
 
-    Yaw   += xoffset;
+    Yaw += xoffset;
     Pitch += yoffset;
 
     // Make sure that when pitch is out of bounds, screen doesn't get flipped
-    if (constrainPitch) {
-      if (Pitch > MAXLOOKANGLE){
+    if (constrainPitch)
+    {
+      if (Pitch > MAXLOOKANGLE)
+      {
         Pitch = MAXLOOKANGLE;
       }
-      if (Pitch < -MAXLOOKANGLE){
+      if (Pitch < -MAXLOOKANGLE)
+      {
         Pitch = -MAXLOOKANGLE;
       }
     }
@@ -380,37 +449,46 @@ public:
     glutPostRedisplay();
   }
 
-  void Rise(float deltatime) {
-    if (Position.y <= JUMPHEIGHT) {
+  void Rise(float deltatime)
+  {
+    if (Position.y <= JUMPHEIGHT)
+    {
       Position.y += 0.004 * deltatime;
-    } else {
+    }
+    else
+    {
       isFalling = true;
     }
   }
 
-  void Fall(float deltatime) {
-    if (Position.y <= CAMSTART[1] + 0.05f) {
+  void Fall(float deltatime)
+  {
+    if (Position.y <= CAMSTART[1] + 0.05f)
+    {
       Position.y = CAMSTART[1];
       onGround = true;
-    } else {
+    }
+    else
+    {
       Position.y -= 0.004f * deltatime;
     }
     updateCameraVectors();
   }
 
   // Processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
-   void ProcessMouseScroll(float yoffset)
-   {
-     if (Zoom >= 20.0f && Zoom <= 50.0f)
-       Zoom -= yoffset;
-     if (Zoom <= 20.0f)
-       Zoom = 20.0f;
-     if (Zoom >= 50.0f)
-       Zoom = 50.0f;
-   }
+  void ProcessMouseScroll(float yoffset)
+  {
+    if (Zoom >= 20.0f && Zoom <= 50.0f)
+      Zoom -= yoffset;
+    if (Zoom <= 20.0f)
+      Zoom = 20.0f;
+    if (Zoom >= 50.0f)
+      Zoom = 50.0f;
+  }
 
   // Resets all the camera values back to the defaults
-  void Reset() {
+  void Reset()
+  {
     Position = glm::vec3(CAMSTART[0], CAMSTART[1], CAMSTART[2]);
     WorldUp = glm::vec3(0.0f, 1.0f, 0.0f);
     Yaw = YAW;
@@ -423,27 +501,36 @@ public:
   }
 
   // attempts to interact with enviornment, triggering game events
-  void triggerAreaInteract() {
+  void triggerAreaInteract()
+  {
 
     //OPEN/CLOSE ORANGE ROOM DOOR
-    if (Position.x <  -0.5f && Position.x > -2.5f &&
-        Position.z < -3.0f && Position.z > -7.3f) {
-      if (!orangeRoomOpen) {
+    if (Position.x < -0.5f && Position.x > -2.5f &&
+        Position.z < -3.0f && Position.z > -7.3f)
+    {
+      if (!orangeRoomOpen)
+      {
         playdoorsound();
         orangeRoomOpen = true;
-      } else {
+      }
+      else
+      {
         playdoorclosesound();
         orangeRoomOpen = false;
       }
     }
 
     // OPEN/CLOSE BLUE ROOM DOOR
-    else if (Position.x >  7.2f && Position.x < 9.9f &&
-             Position.z < -3.0f && Position.z > -7.3f) {
-      if (!blueRoomOpen) {
+    else if (Position.x > 7.2f && Position.x < 9.9f &&
+             Position.z < -3.0f && Position.z > -7.3f)
+    {
+      if (!blueRoomOpen)
+      {
         playdoorsound();
         blueRoomOpen = true;
-      } else {
+      }
+      else
+      {
         playdoorclosesound();
         blueRoomOpen = false;
       }
@@ -452,16 +539,18 @@ public:
     // PICK UP TRIANGLE TO OPEN DOOR
     else if (!orangeRoomItemCollected &&
              Position.x < -6.5f && Position.x > -9.9f &&
-             Position.z < -6.2 && Position.z > -9.9f) {
+             Position.z < -6.2 && Position.z > -9.9f)
+    {
       playpickupsound();
-//      playdemolitionsound();
+      //      playdemolitionsound();
       orangeRoomItemCollected = true;
     }
 
     // BLAST RED DOOR
     else if (!redWallDestroyed && orangeRoomItemCollected &&
              Position.x > 5.5 && Position.x < 9.7f &&
-             Position.z < 2.3 && Position.z > -0.4) {
+             Position.z < 2.3 && Position.z > -0.4)
+    {
       playdestroysound();
       redWallDestroyed = true;
       playdemolitionsound();
@@ -470,7 +559,8 @@ public:
     // FLIP SWITCH RED DOOR
     else if (redWallDestroyed && orangeRoomItemCollected &&
              Position.x > 6.9f && Position.x < 9.9f &&
-             Position.z < 9.9f && Position.z > 6.9f) {
+             Position.z < 9.9f && Position.z > 6.9f)
+    {
       playswitchsound();
       switchFlipped = !switchFlipped;
       purpleRoomOpen = !purpleRoomOpen;
@@ -479,7 +569,8 @@ public:
     // PICKUP AXE
     else if (!AXECollected &&
              Position.x > 5.4f && Position.x < 8.9f &&
-             Position.z < -8.0f && Position.z > -9.9f) {
+             Position.z < -8.0f && Position.z > -9.9f)
+    {
       playpickupsound();
       AXECollected = true;
     }
@@ -487,15 +578,20 @@ public:
     // SMASH FRONT DOOR
     else if (mainDoorHp != 0 && /*AXECollected &&*/
              Position.x > -2.f && Position.x < 2.f &&
-             Position.z < 10.f && Position.z > 6.f) {
-      if (AXECollected) {
+             Position.z < 10.f && Position.z > 6.f)
+    {
+      if (AXECollected)
+      {
         playsmashsound();
         mainDoorHp--;
-        if (mainDoorHp == 0) {
+        if (mainDoorHp == 0)
+        {
           playwinsound();
           // playpickupsound();
         }
-      } else {
+      }
+      else
+      {
         playknocksound();
       }
     }
@@ -513,8 +609,8 @@ private:
     front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
     Front = glm::normalize(front);
     // Also re-calculate the Right and Up vector
-    Right = glm::normalize(glm::cross(Front, WorldUp));  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
-    Up    = glm::normalize(glm::cross(Right, Front));
+    Right = glm::normalize(glm::cross(Front, WorldUp)); // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
+    Up = glm::normalize(glm::cross(Right, Front));
   }
 };
 
