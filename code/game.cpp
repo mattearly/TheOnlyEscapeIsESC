@@ -55,7 +55,7 @@ void Game::begin()
 
   glutSetCursor(GLUT_CURSOR_NONE);
 
-  playdefaultmusic();
+  // playdefaultmusic();
 }
 
 void Game::changeGameState()
@@ -81,7 +81,8 @@ void Game::initAllCallbacks()
   setupSpecialkbDownCallback();
   setupSpecialkbUpCallback();
   setupPassiveMouseCallback();
-  playrunawaysound();
+  // playrunawaysound();
+  playRunAwayVoice();
 }
 
 
