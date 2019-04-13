@@ -562,13 +562,13 @@ void Game::mouseClick(int btn, int state, int x, int y) {
     switch(btn) {
     case GLUT_LEFT_BUTTON:
       camera->triggerAreaInteract();
-      //      std::cout << "left click at: (" << x << ", " << y << ")\n";
+      //      //std::cout << "left click at: (" << x << ", " << y << ")\n";
       break;
     case GLUT_RIGHT_BUTTON:
-      //      std::cout << "right click at: (" << x << ", " << y << ")\n";
+      //      //std::cout << "right click at: (" << x << ", " << y << ")\n";
       break;
     case GLUT_MIDDLE_BUTTON:
-      //      std::cout << "middle click at: (" << x << ", " << y << ")\n";
+      //      //std::cout << "middle click at: (" << x << ", " << y << ")\n";
       break;
     case 3:  //mouse wheel scrolls
       camera->ProcessMouseScroll(1.0f);
@@ -585,7 +585,7 @@ void Game::mouseClick(int btn, int state, int x, int y) {
 
 void Game::clickHoldMotion(int x, int y)
 {
-  std::cout << "drag at: (" << x << ", " << y << ")\n";
+  //std::cout << "drag at: (" << x << ", " << y << ")\n";
   glutPostRedisplay();
 }
 
@@ -594,8 +594,8 @@ void Game::reshapeWindow(int w, int h)
   glViewport(0,0,w,h);
   win_w = w;
   win_h = h;
-  MOUSEX_WARP_OFFSET = win_w / 2.4;  //for keeping mouse centered on first person movement
-  MOUSEY_WARP_OFFSET = win_h / 2.4;
+  MOUSEX_WARP_OFFSET = win_w/2;  //for keeping mouse centered on first person movement
+  MOUSEY_WARP_OFFSET = win_h/2;
   glutWarpPointer(win_w/2, win_h/2);
   glutPostRedisplay();
 }
@@ -654,10 +654,10 @@ void Game::ASCIIKeyboardDown(unsigned char k, int x, int y)
   default:
     break;
   }
-  std::cout << "@worldloc: "
-            << camera->Position.x << ", "
-            << camera->Position.y << ", "
-            << camera->Position.z << "\n";
+  //std::cout << "@worldloc: "
+            // << camera->Position.x << ", "
+            // << camera->Position.y << ", "
+            // << camera->Position.z << "\n";
   glutPostRedisplay();
 }
 

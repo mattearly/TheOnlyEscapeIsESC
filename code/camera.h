@@ -16,16 +16,16 @@ static struct Camera_Movement
 } CamMove;
 
 // Default camera values
-constexpr float YAW = -45.0f;
-constexpr float PITCH = 0.0f;
-constexpr float SPEED = 0.005f;
-constexpr float SENSITIVITY = 0.0009f;
-constexpr float ZOOM = 45.0f;
-constexpr float CAMSTART[3] = {-3.0f, 1.0f, 8.7f};
-constexpr float JUMPHEIGHT = CAMSTART[1] + 0.6f;
-//constexpr float BOUNDRYSIZE  = 9.9;
-constexpr float MAXLOOKANGLE = 35.0f;
-constexpr float TIMEBETWEENFOOTSTEPS = 290.0f;
+const float YAW = -45.0f;
+const float PITCH = 0.0f;
+const float SPEED = 0.006f;
+const float SENSITIVITY = 0.0025f;
+const float ZOOM = 45.0f;
+const float CAMSTART[3] = {-3.0f, 1.0f, 8.7f};
+const float JUMPHEIGHT = CAMSTART[1] + 0.6f;
+//const float BOUNDRYSIZE  = 9.9;
+const float MAXLOOKANGLE = 35.0f;
+const float TIMEBETWEENFOOTSTEPS = 290.0f;
 
 static float timeSinceLastStep = 0;
 
@@ -129,7 +129,7 @@ public:
     else if (Position.x > ZONEDX[0] && Position.z < ZONEDZ[0] &&
              Position.x < ZONEDX[1] && Position.z > ZONEDZ[1])
     {
-      std::cout << "orange wall block\n";
+      //std::cout << "orange wall block\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;
@@ -152,7 +152,7 @@ public:
     else if (Position.x > ZONEDX[2] && Position.z < ZONEDZ[0] &&
              Position.x < ZONEDX[3] && Position.z > ZONEDZ[1])
     {
-      std::cout << "blue wall block\n";
+      //std::cout << "blue wall block\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;
@@ -176,7 +176,7 @@ public:
              Position.x > ZONEDX[4] && Position.z < ZONEDZ[0] &&
              Position.x < ZONEDX[5] && Position.z > ZONEDZ[1])
     {
-      std::cout << "door orange wall block\n";
+      //std::cout << "door orange wall block\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;
@@ -200,7 +200,7 @@ public:
              Position.x > ZONEDX[6] && Position.z < ZONEDZ[0] &&
              Position.x < ZONEDX[7] && Position.z > ZONEDZ[1])
     {
-      std::cout << "door blue wall block\n";
+      //std::cout << "door blue wall block\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;
@@ -224,7 +224,7 @@ public:
              Position.x > ZONEDX[8] && Position.z < ZONEDZ[2] &&
              Position.x < ZONEDX[9] && Position.z > ZONEDZ[3])
     {
-      std::cout << "purple wall block\n";
+      //std::cout << "purple wall block\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;
@@ -247,7 +247,7 @@ public:
     else if (Position.x > ZONEDX[8] + 1.3 && Position.z < ZONEDZ[2] &&
              Position.x < ZONEDX[9] && Position.z > ZONEDZ[3])
     {
-      std::cout << "purple wall block\n";
+      //std::cout << "purple wall block\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;
@@ -270,7 +270,7 @@ public:
     else if (Position.x > ZONEDX[10] && Position.z < ZONEDZ[4] &&
              Position.x < ZONEDX[11] && Position.z > ZONEDZ[5])
     {
-      std::cout << "in between wall block\n";
+      //std::cout << "in between wall block\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;
@@ -293,7 +293,7 @@ public:
     else if (Position.x > ZONEDX[12] && Position.z < ZONEDZ[6] &&
              Position.x < ZONEDX[13] && Position.z > ZONEDZ[7])
     {
-      std::cout << "RED wall block\n";
+      //std::cout << "RED wall block\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;
@@ -317,7 +317,7 @@ public:
              Position.x > ZONEDX[14] && Position.z < ZONEDZ[8] &&
              Position.x < ZONEDX[15] && Position.z > ZONEDZ[9])
     {
-      std::cout << "RED DESTRUCTABLE wall block!\n";
+      //std::cout << "RED DESTRUCTABLE wall block!\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;
@@ -362,7 +362,7 @@ public:
         Position.x < HOUSESIZE && Position.z < HOUSESIZE && //front wall
             Position.x > -HOUSESIZE && Position.z > HOUSESIZE - 0.4f)
     {
-      std::cout << "house wall block\n";
+      //std::cout << "house wall block\n";
       if (CamMove.forward)
       {
         Position -= Front * velocity;

@@ -20,10 +20,10 @@ int main(int argc, char **argv)
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
   //debug testing screen size function stuff
-  std::cout << "glut screen width(DEFAULT): " << GLUT_SCREEN_WIDTH << std::endl;
-  std::cout << "glut screen height(DEFAULT): " << GLUT_SCREEN_HEIGHT << std::endl;
-  std::cout << "glut screen width: " << glutGet(GLUT_SCREEN_WIDTH) << std::endl;
-  std::cout << "glut screen height: " << glutGet(GLUT_SCREEN_HEIGHT) << std::endl;
+  //std::cout << "glut screen width(DEFAULT): " << GLUT_SCREEN_WIDTH << std::endl;
+  //std::cout << "glut screen height(DEFAULT): " << GLUT_SCREEN_HEIGHT << std::endl;
+  //std::cout << "glut screen width: " << glutGet(GLUT_SCREEN_WIDTH) << std::endl;
+  //std::cout << "glut screen height: " << glutGet(GLUT_SCREEN_HEIGHT) << std::endl;
 
   win_w = glutGet(GLUT_SCREEN_WIDTH) / 1.2;
   win_h = glutGet(GLUT_SCREEN_HEIGHT);
