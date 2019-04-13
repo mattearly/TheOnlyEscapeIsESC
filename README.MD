@@ -2,58 +2,48 @@
 
 <img src="screenshot.png" height="337px" width="600px" align="center">
 
-#### what is this?
+## About
 
-A game I made for a class to demonstrate some stuff you can do with OpenGL, C++, and SDL2 libraries.
+Free OpenSource Haunted House Game Demo. I dunno just doing this for fun and to try out stuff. Maybe someone out there will enjoy or learn from it. See if you can escape the house...
 
-#### how to win the game:
+## Controls:
 
-* escape the house
-
-#### controls:
-
-* mouse move - look
-* wasd - move
-* space - jump
-* mouse wheel - zoom in/out
-* e and/or left click - interact/use
-* ESC - win the game by giving up like a sissy
+| Control | | Effect |
+| --- | --- | --- |
+| **Move Mouse** | ... | Look around / Adjust player forward direction |
+| **'W' 'A' 'S' 'D'** | ... | Move / Strafe |
+| **Space** | ... | Jump |
+| **Mouse Wheel** | ... |  Zoom In/Out |
+| **E or Left Click** | ... | Interact with Door/Item |
+| **ESC** | ... | Close The Game / Give Up |
 
 ---
 
-#### requirements to compile with debian (built on Linux Mint, these instructions should work with any Debian based distro)
+## Prereqs to compile and run
 
-* glut
+Debian Linux, OpenGL, glut, glew, glme, opengl32 with support for shader model 1.30 or later
 
-      apt install freeglut3-dev
+* all-in-one apt install
 
-* glew
-
-      apt install libglew-dev 
+      sudo apt-get install freeglut3-dev libglew-dev libsdl2-mixer-dev libglm-dev
 
 * opengl32 - usually comes with your graphics card drivers
 
-* sdl2-mixer
-
-      apt install libsdl2-mixer-dev
-
-* glm
-
-      apt install libglm-dev
-
 ---
 
-#### compile
+## Compile and run
 
-* clone this repo
-* `cd` to directory
+* clone this repo `cd` to directory & and type `make run`
 
-      make
-      make run
+      git clone && cd TheOnlyEscapeIsESC && make run
 
 * if it fails, address requirements/dependencies and try again
 
-#### future?
+## Future?
 
-There may be furture iterations of this project that include textures, lighting, more content, and other various improvements if I can find time to work on it.  Anyone checking this out, feel free to work on it if you want, there is a lot of room for improvements. Submit a Pull Request if you think the changes benefit the overall program.
+I will work on this when I feel like it, its pretty much just a little playground for me, nothing too serious. Anyone is welcome to fork it and make edits and pull requests if you think it makes the game better.
+
+## License
+
+All content created, developed, produced by me unless otherwise noted.
 
