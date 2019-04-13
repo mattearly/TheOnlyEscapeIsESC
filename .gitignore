@@ -1,2 +1,5 @@
 *.o
 TheOnlyEscapeIsEscape*
+*.ipch
+*.bin
+*.vscode

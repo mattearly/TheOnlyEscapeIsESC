@@ -26,7 +26,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 .PHONY: clean
 clean:
-	-rm -f $(OBJECTS) $(TARGET) *core* *~
+	-rm -f $(OBJECTS) $(TARGET) *core* *~ .vscode/*.ipch
 
 .PHONY: rebuild
 rebuild:
@@ -52,8 +52,3 @@ help:
 run-cygwin:
 	+$(MAKE) all
 	startxwin $(RUN)
-
-
-# fail cases:
-# 1. couldn't find <glm/glm.hpp> 
-#    linux mint 18 solution: apt install libglm-dev 

@@ -1,49 +1,28 @@
 # THE ONLY ESCAPE... IS ESC!
 
-<img src="screenshot.png" height="337px" width="600px" align="center">
+<img src="screenshot.png" height="80px" width="130px" align="right">
 
 ## About
 
-Free OpenSource Haunted House Game Demo. I dunno just doing this for fun and to try out stuff. Maybe someone out there will enjoy or learn from it. See if you can escape the house...
+Free OpenSource Haunted House Game Demo. See if you can escape the house...
 
-## Controls:
+## Built On
 
-| Control | | Effect |
-| --- | --- | --- |
-| **Move Mouse** | ... | Look around / Adjust player forward direction |
-| **'W' 'A' 'S' 'D'** | ... | Move / Strafe |
-| **Space** | ... | Jump |
-| **Mouse Wheel** | ... |  Zoom In/Out |
-| **E or Left Click** | ... | Interact with Door/Item |
-| **ESC** | ... | Close The Game / Give Up |
-
----
-
-## Prereqs to compile and run
-
-Debian Linux, OpenGL, glut, glew, glme, opengl32 with support for shader model 1.30 or later
-
-* all-in-one apt install
+[Linux Mint OS](https://www.linuxmint.com/download.php), [glfw3](https://www.glfw.org/), [glew](http://glew.sourceforge.net/), [glm](https://glm.g-truc.net/0.9.5/index.html), [sdl2_mixer](https://www.libsdl.org/projects/SDL_mixer/)
 
       sudo apt-get install freeglut3-dev libglew-dev libsdl2-mixer-dev libglm-dev
 
-* opengl32 - usually comes with your graphics card drivers
-
----
-
 ## Compile and run
 
-* clone this repo `cd` to directory & and type `make run`
+Clone this repo `cd` to directory & and type `make run`. If it fails, address requirements/dependencies and try again
 
-      git clone && cd TheOnlyEscapeIsESC && make run
 
-* if it fails, address requirements/dependencies and try again
+      cd TheOnlyEscapeIsESC && make run
 
 ## Future?
 
-I will work on this when I feel like it, its pretty much just a little playground for me, nothing too serious. Anyone is welcome to fork it and make edits and pull requests if you think it makes the game better.
+I will work on this when I feel like it, its pretty much just a little playground for me, nothing too serious.
 
 ## License
 
-All content created, developed, produced by me unless otherwise noted.
-
+All content and story created, developed, produced by [Matthew Early](matthewjearly@gmail.com).
