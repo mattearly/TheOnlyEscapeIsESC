@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 Game::Game()
 {
   State = PLAY;
@@ -32,7 +31,7 @@ void Game::begin()
   aPos = glGetAttribLocation(shader->ID, "aPos");
   aColor = glGetAttribLocation(shader->ID, "aColor");
 
-  glEnableVertexAttribArray(aPos);   //already enabled
+  glEnableVertexAttribArray(aPos); //already enabled
   glEnableVertexAttribArray(aColor);
 
   glGenVertexArrays(1, &VAO);
@@ -55,12 +54,13 @@ void Game::begin()
 
   glutSetCursor(GLUT_CURSOR_NONE);
 
-  playdefaultmusic();
+  // playdefaultmusic();
 }
 
 void Game::changeGameState()
 {
-  switch (State) {
+  switch (State)
+  {
   case MAIN_MENU:
     break;
   case PLAY:
@@ -81,86 +81,103 @@ void Game::initAllCallbacks()
   setupSpecialkbDownCallback();
   setupSpecialkbUpCallback();
   setupPassiveMouseCallback();
-  playrunawaysound();
+  // playrunawaysound();
+  playRunAwayVoice();
 }
-
 
 ///
 /// \brief g_CurrentInstance
 ///  for linking to callbacks from within the class
-static Game * g_CurrentInstance;
+static Game *g_CurrentInstance;
 
-extern "C" void displayCallback() {
+extern "C" void displayCallback()
+{
   g_CurrentInstance->updateDisplay();
 }
 
-extern "C" void idleCallback() {
+extern "C" void idleCallback()
+{
   g_CurrentInstance->idle();
 }
 
-extern "C" void clickCallback(int btn, int state, int x, int y) {
+extern "C" void clickCallback(int btn, int state, int x, int y)
+{
   g_CurrentInstance->mouseClick(btn, state, x, y);
 }
 
-extern "C" void clickHoldCallback(int x, int y) {
+extern "C" void clickHoldCallback(int x, int y)
+{
   g_CurrentInstance->clickHoldMotion(x, y);
 }
 
-extern "C" void reshapeCallback(int w, int h) {
+extern "C" void reshapeCallback(int w, int h)
+{
   g_CurrentInstance->reshapeWindow(w, h);
 }
 
-extern "C" void keyDownCallback(unsigned char k, int x, int y) {
+extern "C" void keyDownCallback(unsigned char k, int x, int y)
+{
   g_CurrentInstance->ASCIIKeyboardDown(k, x, y);
 }
 
-extern "C" void keyUpCallback(unsigned char k, int x, int y) {
+extern "C" void keyUpCallback(unsigned char k, int x, int y)
+{
   g_CurrentInstance->ASCIIKeyboardUp(k, x, y);
 }
 
-extern "C" void specialDownCallback(int k, int x, int y) {
+extern "C" void specialDownCallback(int k, int x, int y)
+{
   g_CurrentInstance->keyboardDownSpecial(k, x, y);
 }
 
-extern "C" void specialUpCallback(int k, int x, int y) {
+extern "C" void specialUpCallback(int k, int x, int y)
+{
   g_CurrentInstance->keyboardUpSpecial(k, x, y);
 }
 
-extern "C" void passiveMouseCallback(int x, int y) {
+extern "C" void passiveMouseCallback(int x, int y)
+{
   g_CurrentInstance->passiveMouseMotion(x, y);
 }
 
-void Game::setupDisplayCallback() {
+void Game::setupDisplayCallback()
+{
   ::g_CurrentInstance = this;
   ::glutDisplayFunc(::displayCallback);
 }
 
-void Game::setupIdleCallback() {
+void Game::setupIdleCallback()
+{
   ::g_CurrentInstance = this;
   ::glutIdleFunc(::idleCallback);
 }
 
-void Game::setupMouseClickCallback() {
+void Game::setupMouseClickCallback()
+{
   ::g_CurrentInstance = this;
   ::glutMouseFunc(::clickCallback);
 }
 
-void Game::setupClickHoldCallback() {
+void Game::setupClickHoldCallback()
+{
   ::g_CurrentInstance = this;
   ::glutMotionFunc(::clickHoldCallback);
 }
 
-void Game::setupReshapeCallback() {
+void Game::setupReshapeCallback()
+{
   ::g_CurrentInstance = this;
   ::glutReshapeFunc(::reshapeCallback);
 }
 
-void Game::setupASCIIkbDownCallback() {
+void Game::setupASCIIkbDownCallback()
+{
   ::g_CurrentInstance = this;
   ::glutKeyboardFunc(::keyDownCallback);
 }
 
-void Game::setupASCIIkbUpCallback() {
+void Game::setupASCIIkbUpCallback()
+{
   ::g_CurrentInstance = this;
   ::glutKeyboardUpFunc(::keyUpCallback);
 }
@@ -171,14 +188,14 @@ void Game::setupSpecialkbDownCallback()
   ::glutSpecialFunc(::specialDownCallback);
 }
 
-void Game::setupSpecialkbUpCallback() {
+void Game::setupSpecialkbUpCallback()
+{
   ::g_CurrentInstance = this;
   ::glutSpecialUpFunc(::specialUpCallback);
 }
 
-void Game::setupPassiveMouseCallback() {
+void Game::setupPassiveMouseCallback()
+{
   ::g_CurrentInstance = this;
   ::glutPassiveMotionFunc(::passiveMouseCallback);
 }
-
-

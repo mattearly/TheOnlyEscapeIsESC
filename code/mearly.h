@@ -6,7 +6,8 @@
 #include <random>
 #include <chrono>
 
-namespace mearly {
+namespace mearly
+{
 
 ///
 /// \brief ZTOR Zero-To-One-Random uses MersenneTwister seeded on a high precision
@@ -27,5 +28,4 @@ int ZOOR();
 ///
 int NTKR(int n, int k);
 
-}  //end namespace mearly
-
+} //end namespace mearly

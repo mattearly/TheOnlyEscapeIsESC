@@ -3,7 +3,6 @@
 
 #include <SDL2/SDL_mixer.h>
 
-
 static const int NUMFOOTSTEPS = 6;
 static Mix_Chunk *footstepsoundeffects[NUMFOOTSTEPS];
 void playfootstepsound();
@@ -42,6 +41,9 @@ void playdeadsound();
 static Mix_Chunk *runawaysoundeffect;
 void playrunawaysound();
 
+static Mix_Chunk *runAwayVoice;
+void playRunAwayVoice();
+
 static Mix_Music *winsoundeffect;
 void playwinsound();
 
@@ -51,4 +53,3 @@ void playdefaultmusic();
 void initsound();
 
 #endif // SOUND
-

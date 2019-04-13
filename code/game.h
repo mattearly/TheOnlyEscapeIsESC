@@ -23,8 +23,8 @@ public:
   unsigned int VAO;
   unsigned int VBOs[2];
 
-  GLuint aPos;  //position of currently being drawn object
-  GLuint aColor;  // color of currently being drawn object
+  GLuint aPos;   //position of currently being drawn object
+  GLuint aColor; // color of currently being drawn object
   GLuint aColorIndex;
 
   //  GLuint camera_view;  // camera-view matrix uniform shader variable location
@@ -34,7 +34,7 @@ public:
   Camera *camera;
   Shader *shader;
 
-  float deltaTime = 0.0f;	// Time between current frame and last frame
+  float deltaTime = 0.0f; // Time between current frame and last frame
   float lastFrame = 0.0f; // Time of last frame
 
   void begin();
@@ -52,7 +52,11 @@ public:
   void passiveMouseMotion(int x, int y);
 
 private:
-  enum STATE { MAIN_MENU, PLAY } State;
+  enum STATE
+  {
+    MAIN_MENU,
+    PLAY
+  } State;
 
   void initAllCallbacks();
 
@@ -67,6 +71,5 @@ private:
   void setupSpecialkbUpCallback();
   void setupPassiveMouseCallback();
 };
-
 
 #endif // GAME_H
