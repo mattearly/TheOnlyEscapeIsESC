@@ -1,0 +1,11 @@
+{
+  "name": "escape",
+  "version-string": "1.0",
+  "dependencies": [
+    "glm",
+    "glew",
+    "sdl2",
+    "sdl2-mixer",
+    "freeglut"
+  ]
+}
