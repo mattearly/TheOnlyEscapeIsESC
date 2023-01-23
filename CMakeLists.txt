@@ -26,5 +26,19 @@ target_link_libraries(escape
      $<IF:$<TARGET_EXISTS:SDL2_mixer::SDL2_mixer>,SDL2_mixer::SDL2_mixer,SDL2_mixer::SDL2_mixer-static>
 )
 
+
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/shaders/ DESTINATION ${CMAKE_BINARY_DIR}/shaders/)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources/sound/ DESTINATION ${CMAKE_BINARY_DIR}/resources/sound/)
+
+
+#install for distribution
+install(TARGETS escape)
+
+file(GLOB runtime_dlls LIST_DIRECTORIES false ${CMAKE_CURRENT_BINARY_DIR}/*.dll)
+install(FILES ${runtime_dlls} DESTINATION bin)
+
+file(GLOB runtime_shaders LIST_DIRECTORIES false ${CMAKE_CURRENT_SOURCE_DIR}/shaders/*.glsl)
+install(FILES ${runtime_shaders} DESTINATION bin/shaders)
+
+file(GLOB runtime_sounds LIST_DIRECTORIES false ${CMAKE_CURRENT_SOURCE_DIR}/resources/sound/*.wav)
+install(FILES ${runtime_sounds} DESTINATION bin/resources/sound)
