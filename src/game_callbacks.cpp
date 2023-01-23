@@ -23,34 +23,34 @@ void Game::updateDisplay()
   // render
 
   // outside look control
-  dayDeltaTime += deltaTime;
-  if (dayDeltaTime > 100000.0f) { dayDeltaTime = 0.0f; };
-  // switch to representation of the SKY
-  if (dayDeltaTime > 90000.0f) {
-    glClearColor(0.12f, 0.07f, 0.50f, 1.0f);  //dawn background
-    shader->setInt("timeofday", 1);
-  } else if (dayDeltaTime > 80000.0f) {
-    glClearColor(0.30f, 0.00f, 0.10f, 1.0f);  //early dawn background
-    shader->setInt("timeofday", 2);
-  } else if (dayDeltaTime > 60000) {
-    glClearColor(0.08f, 0.0f, 0.0f, 1.0f);  //late late night background
-    shader->setInt("timeofday", 3);
-  } else if (dayDeltaTime > 40000.0f) {
-    glClearColor(0.15f, 0.10f, 0.10f, 1.0f);  //black background
-    shader->setInt("timeofday", 4);
-  } else if (dayDeltaTime > 30000.0f) {
-    glClearColor(0.25f, 0.20f, 0.30f, 1.0f);  //dark grey background
-    shader->setInt("timeofday", 5);
-  } else if (dayDeltaTime > 20000.0f) {
-    glClearColor(0.20f, 0.10f, 0.52f, 1.0f);  //late evening background
-    shader->setInt("timeofday", 6);
-  } else if (dayDeltaTime > 10000.0f) {
-    glClearColor(0.14f, 0.07f, 0.62f, 1.0f);  //evening background
-    shader->setInt("timeofday", 7);
-  } else {
-    glClearColor(0.07, 0.14f, 0.75f, 1.0f);  // day blue background
-    shader->setInt("timeofday", 8);
-  }
+  //dayDeltaTime += deltaTime;
+  //if (dayDeltaTime > 100000.0f) { dayDeltaTime = 0.0f; };
+  // switch to representation of the SKY  -- shader doesn't use this
+  //if (dayDeltaTime > 90000.0f) {
+  //  glClearColor(0.12f, 0.07f, 0.50f, 1.0f);  //dawn background
+  //  shader->setInt("timeofday", 1);
+  //} else if (dayDeltaTime > 80000.0f) {
+  //  glClearColor(0.30f, 0.00f, 0.10f, 1.0f);  //early dawn background
+  //  shader->setInt("timeofday", 2);
+  //} else if (dayDeltaTime > 60000) {
+  //  glClearColor(0.08f, 0.0f, 0.0f, 1.0f);  //late late night background
+  //  shader->setInt("timeofday", 3);
+  //} else if (dayDeltaTime > 40000.0f) {
+  //  glClearColor(0.15f, 0.10f, 0.10f, 1.0f);  //black background
+  //  shader->setInt("timeofday", 4);
+  //} else if (dayDeltaTime > 30000.0f) {
+  //  glClearColor(0.25f, 0.20f, 0.30f, 1.0f);  //dark grey background
+  //  shader->setInt("timeofday", 5);
+  //} else if (dayDeltaTime > 20000.0f) {
+  //  glClearColor(0.20f, 0.10f, 0.52f, 1.0f);  //late evening background
+  //  shader->setInt("timeofday", 6);
+  //} else if (dayDeltaTime > 10000.0f) {
+  //  glClearColor(0.14f, 0.07f, 0.62f, 1.0f);  //evening background
+  //  shader->setInt("timeofday", 7);
+  //} else {
+  //  glClearColor(0.07, 0.14f, 0.75f, 1.0f);  // day blue background
+  //  shader->setInt("timeofday", 8);
+  //}
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

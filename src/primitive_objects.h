@@ -65,6 +65,7 @@ static const float cube[] = {
     -1.0f, 1.0f, 1.0f,
     -1.0f, 1.0f, -1.0f};
 
-static const float circle = 1.0f; // all we really need is a radius
+// not used
+//static const float circle = 1.0f; // all we really need is a radius
 
 #endif

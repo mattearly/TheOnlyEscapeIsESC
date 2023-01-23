@@ -20,7 +20,7 @@ constexpr float YAW = -45.0f;
 constexpr float PITCH = 0.0f;
 constexpr float SPEED = 0.005f;
 constexpr float SENSITIVITY = 0.0109f;
-constexpr float ZOOM = 45.0f;
+constexpr float ZOOM = 60.0f;
 constexpr float CAMSTART[3] = {-3.0f, 1.0f, 8.7f};
 constexpr float JUMPHEIGHT = CAMSTART[1] + 0.6f;
 //constexpr float BOUNDRYSIZE  = 9.9;
@@ -603,7 +603,7 @@ private:
   {
     // An abstract camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for use in OpenGL
     // Calculate the new Front vector
-    glm::vec3 front;
+    glm::vec3 front{};
     front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
     front.y = sin(glm::radians(Pitch));
     front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
