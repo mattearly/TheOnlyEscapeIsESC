@@ -2,15 +2,15 @@
 
 <img src="screenshot.png" height="337px" width="600px" align="center">
 
-#### what is this?
+## what is this?
 
 A game I made for a class to demonstrate some stuff you can do with OpenGL, C++, and SDL2 libraries.
 
-#### how to win the game:
+## how to win the game:
 
 * escape the house
 
-#### controls:
+## controls:
 
 * wasd - move
 * space - jump
@@ -20,7 +20,11 @@ A game I made for a class to demonstrate some stuff you can do with OpenGL, C++,
 
 ---
 
-#### requirements to compile with debian (built on Linux Mint, these instructions should work with any Debian based distro)
+# build
+
+## linux
+
+### requirements to compile with debian (built on Linux Mint, these instructions should work with any Debian based distro)
 
 * glut
 
@@ -40,17 +44,34 @@ A game I made for a class to demonstrate some stuff you can do with OpenGL, C++,
 
       apt install libglm-dev
 
----
-
-#### compile
+### compile
 
 * clone this repo
-* `cd` to directory
 
-      make
-      make run
+      cd TheOnlyEscapeIsESC
+      mkdir build/
+      cd build/
+      cmake -S .
 
 * if it fails, address requirements/dependencies and try again
+
+# Windows
+
+## requirements
+
+* [vcpkg](https://github.com/microsoft/vcpkg) for libraries
+
+## compile
+
+* clone repo
+
+* option1: use Visual Studio
+  * continue without code...
+  * File->Open->CMake...
+  * use IDE build/run commands
+* option2: use cmake
+  * see linux version, same commands
+  
 
 #### future?
 
