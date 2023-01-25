@@ -55,13 +55,13 @@ A game I made for a class to demonstrate some stuff you can do with OpenGL, C++,
 
 * if it fails, address requirements/dependencies and try again
 
-# Windows
+## Windows
 
-## requirements
+### requirements
 
 * [vcpkg](https://github.com/microsoft/vcpkg) for libraries
 
-## compile
+### compile
 
 * clone repo
 
@@ -73,7 +73,7 @@ A game I made for a class to demonstrate some stuff you can do with OpenGL, C++,
   * see linux version, same commands
   
 
-#### future?
+# future?
 
 There may be furture iterations of this project that include textures, lighting, more content, and other various improvements if I can find time to work on it.  Anyone checking this out, feel free to work on it if you want, there is a lot of room for improvements. Submit a Pull Request if you think the changes benefit the overall program.
 
